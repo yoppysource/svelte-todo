@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		height: 100%;
+		-webkit-font-smoothing: antialiased;
+		@apply bg-beige text-gray;
+	}
+
+	html,
+	body,
+	#app-content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	body,
+	#app-content {
+		flex-grow: 1;
+	}
+
+
+	a {
+		@apply underline decoration-primary decoration-2 transition-colors;
+	}
+
+	a:hover {
+		@apply decoration-primary;
+	}
+
+	strong {
+		@apply font-semibold;
+	}
+}
+
+@layer components {
+    .card {
+        @apply bg-white rounded-s-none shadow-md outline-1;
+    }
+	/* floating action button */
+	.fab {
+		@apply z-10 bottom-10 right-8 bg-primary w-20 h-20 rounded-full drop-shadow-lg flex justify-center items-center text-white text-xl;
+	}
+}
