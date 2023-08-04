@@ -7,6 +7,11 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+	namespace svelteHTML {
+		interface HTMLAttributes {
+		  'on:longpress'?: (event: CustomEvent) => void
+		}
+	  }
 	declare namespace Model {
 		type Todo = {
 			id: string;
@@ -14,6 +19,7 @@ declare global {
 			completed: boolean;
 		}
 	}
+	
 }
 
 export {};

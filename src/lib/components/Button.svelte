@@ -6,7 +6,7 @@ export let size = 'small';
     <slot>Fallback</slot>
 </button>
 
-<style lang="postcss">
+<style lang="postcss">  
     button {
         @apply py-2 px-4 w-24 h-24;
     }

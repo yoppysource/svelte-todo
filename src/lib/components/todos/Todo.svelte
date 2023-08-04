@@ -2,12 +2,15 @@
 	import { createEventDispatcher, onDestroy } from "svelte";
     import FaRegTrashAlt from 'svelte-icons/fa/FaRegTrashAlt.svelte'
 	import IconCheckBox from "./IconCheckBox.svelte";
+	import tippy from "$lib/actions/tippy";
+
     onDestroy(() => {
         // TODO: Show toast 
-        console.log(`${order} destroyed`);
+        // https://svelte.dev/repl/0091c8b604b74ed88bb7b6d174504f50?version=3.35.0
+        console.log(`${title} destroyed`);
     })
 
-    export let id: string,  title: string, completed: boolean, order: number;
+    export let id: string,  title: string, completed: boolean;
     
     const dispatch = createEventDispatcher();
     const handleRemoveTodo = (id: string) => {
@@ -18,15 +21,16 @@
     } 
 </script>
 
-<li class:completed>
+<li class:completed >
         <p>{title}</p>
         <div class="icons">
-            <button on:click={() => handleRemoveTodo(id)}> 
+            <button class="pr-2" on:click={() => handleRemoveTodo(id)} use:tippy={{content: "delete todo", placement: "left"}}> 
                 <span class="w-5 inline-block">
                     <FaRegTrashAlt />
+                    <slot/>
                   </span>
             </button>
-            <IconCheckBox handleToggleTodo={() => handleToggleTodo(id, !completed)} {completed} />
+            <IconCheckBox handleLongpress={() => handleRemoveTodo(id)}  handleChecked={() => handleToggleTodo(id, !completed)} isChecked={completed} />
         </div>
 </li>
 
